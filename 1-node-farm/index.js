@@ -56,6 +56,7 @@ const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8');
 const dataObj = JSON.parse(data);
 
 const server = http.createServer((req, res) => {
+    const {query, pathname} =  url.parse(req.url, true);
     const pathName = req.url;
 
     //Overview Page
@@ -70,6 +71,7 @@ const server = http.createServer((req, res) => {
 
     //Product Page
     else if (pathName === '/product') {
+        console.log(query);
         res.end("This is the PRODUCT!");
     }
         
